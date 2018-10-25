@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey | Friend Finder</title>
+
+    <!-- bootstrap stylsheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <!-- modal for results. Include a pic and the match's name -->
+    <div class="modal" id="resultsModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Your Friend Match</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- load Match Name dynamically from query to api -->
+                    <h5 id="matchName">Match Name Placeholder</h5>
+                    <!-- load picture source dynamically from query to api -->
+                    <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="friend match picture">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- main page container -->
+    <div class="container col-sm-8">
+        <div class="card">
+            <h3 class="card-header">Survey Questions</h3>
+            <div class="card-body">
+                <h4 class="card-title">About You</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="name">
+                            <h5>Name (Required)</h5>
+                        </label>
+                        <input type="input" class="form-control" id="name" placeholder="First and Last Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="photoLink">
+                            <h5>Photo (Required)</h5>
+                        </label>
+                        <input type="input" class="form-control" id="photoLink" placeholder="Link to an Image">
+                    </div>
+                    <hr>
+
+                    <!-- survey questions// form 10 questions with a selection box of 1-5 -->
+                    <h4 class="card-title">The Questions</h4>
+                    <div class="form-group">
+                        <label for="q1">
+                            <h5>How likely are you to go to a party hosted by people you don't know well?</h5>
+                        </label>
+                        <select class="form-control" id="q1">
+                            <option selected>Choose...</option>
+                            <option value="1">1 (Least Likely)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Most Likely)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q2">
+                            <h5>Do you like to excercise on a regular basis? </h5>
+                        </label>
+                        <select class="form-control" id="q2">
+                            <option selected>Choose...</option>
+                            <option value="1">1 (Strongly Disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Strongly Agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q3">
+                            <h5>Would you rather stay in with a small group of friends vs. going to club/bar?</h5>
+                        </label>
+                        <select class="form-control" id="q3">
+                            <option selected>Choose...</option>
+                            <option value="1">1 (Strongly Disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Strongly Agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q4">
+                            <h5>Do you enjoy being outdoors more than doing activities indoors?</h5>
+                        </label>
+                        <select class="form-control" id="q4">
+                            <option selected>Choose...</option>
+                            <option value="1">1 (Strongly Disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Strongly Agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q5">
+                            <h5>Would you say you enjoy scary movies?</h5>
+                        </label>
+                        <select class="form-control" id="q5">
+                            <option selected>Choose...</option>
+                            <option value="1">1 (Strongly Disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Strongly Agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q6">
+                            <h5>Do you consider yourself a "dog" person?</h5>
+                        </label>
+                        <select class="form-control" id="q6">
+                            <option selected>Choose...</option>
+                            <option value="1">1 (Strongly Disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Strongly Agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q7">
+                            <h5>Do you consider yourself a highly motivated person?</h5>
+                        </label>
+                        <select class="form-control" id="q7">
+                            <option selected>Choose...</option>
+                            <option value="1">1 (Strongly Disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Strongly Agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q8">
+                            <h5>Are you passionate in everything you do?</h5>
+                        </label>
+                        <select class="form-control" id="q8">
+                            <option selected>Choose...</option>
+                            <option value="1">1 (Strongly Disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Strongly Agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q9">
+                            <h5>Can you find the humor in almost any situation?</h5>
+                        </label>
+                        <select class="form-control" id="q9">
+                            <option selected>Choose...</option>
+                            <option value="1">1 (Strongly Disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Strongly Agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q10">
+                            <h5>Do you enjoy taking random surveys?</h5>
+                        </label>
+                        <select class="form-control" id="q10">
+                            <option selected>Choose...</option>
+                            <option value="1">1 (Strongly Disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Strongly Agree))</option>
+                        </select>
+                    </div>
+                    <!-- submit button -->
+                    <button type="submit" id ="submit" class="btn btn-info">Submit</button>
+                </form>
+            </div>
+        </div>
+        <!-- footer for api and source code link -->
+        <div class="footer">
+            <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/chancy23/friend-finder.git">GitHub Repo</a></p>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- bootstrap js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <!-- local script -->
+    <script>
+
+        //for modal
+        $("#resultsModal").modal(options)
+        //on click for submit button to get all inputs and post to the app/data/friends.js file
+
+        //save data as an object, called friend (this matches what is in the apiRoutes file)
+
+        //get to then post the best match to the results modal from the app/routing/apiRoutes.js file
+
+
+
+    </script>
+</body>
+
+</html>
