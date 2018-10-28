@@ -13,25 +13,52 @@
 </head>
 
 <body>
+    <!-- modal for missing name or photo -->
+    <div class="modal" id="missingAboutYouModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Oops!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Please enter your name and/or a link to a photo.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Got It!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal for not answering a question -->
+    <div class="modal" id="blankQuestionModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Oops!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Please answer all questions.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Got It!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- modal for results. Include a pic and the match's name -->
     <div class="modal" id="resultsModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Your Friend Match</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h4 class="modal-title">Your Friend Match is...</h4>
                 </div>
                 <div class="modal-body">
-                    <!-- load Match Name dynamically from query to api -->
-                    <h5 id="matchName">Match Name Placeholder</h5>
-                    <!-- load picture source dynamically from query to api -->
-                    <img src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="friend match picture">
-
+                    <!-- this is where the results Name and Img go -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" id="close" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -64,8 +91,8 @@
                         <label for="q1">
                             <h5>How likely are you to go to a party hosted by people you don't know well?</h5>
                         </label>
-                        <select class="form-control" id="q1">
-                            <option selected>Choose...</option>
+                        <select class="form-control surveyValues" id="q1">
+                            <option value="0" selected>Choose...</option>
                             <option value="1">1 (Least Likely)</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -77,8 +104,8 @@
                         <label for="q2">
                             <h5>Do you like to excercise on a regular basis? </h5>
                         </label>
-                        <select class="form-control" id="q2">
-                            <option selected>Choose...</option>
+                        <select class="form-control surveyValues" id="q2">
+                            <option value="0" selected>Choose...</option>
                             <option value="1">1 (Strongly Disagree)</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -90,8 +117,8 @@
                         <label for="q3">
                             <h5>Would you rather stay in with a small group of friends vs. going to club/bar?</h5>
                         </label>
-                        <select class="form-control" id="q3">
-                            <option selected>Choose...</option>
+                        <select class="form-control surveyValues" id="q3">
+                            <option value="0" selected>Choose...</option>
                             <option value="1">1 (Strongly Disagree)</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -103,8 +130,8 @@
                         <label for="q4">
                             <h5>Do you enjoy being outdoors more than doing activities indoors?</h5>
                         </label>
-                        <select class="form-control" id="q4">
-                            <option selected>Choose...</option>
+                        <select class="form-control surveyValues" id="q4">
+                            <option value="0" selected>Choose...</option>
                             <option value="1">1 (Strongly Disagree)</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -116,8 +143,8 @@
                         <label for="q5">
                             <h5>Would you say you enjoy scary movies?</h5>
                         </label>
-                        <select class="form-control" id="q5">
-                            <option selected>Choose...</option>
+                        <select class="form-control surveyValues" id="q5">
+                            <option value="0" selected>Choose...</option>
                             <option value="1">1 (Strongly Disagree)</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -129,8 +156,8 @@
                         <label for="q6">
                             <h5>Do you consider yourself a "dog" person?</h5>
                         </label>
-                        <select class="form-control" id="q6">
-                            <option selected>Choose...</option>
+                        <select class="form-control surveyValues" id="q6">
+                            <option value="0" selected>Choose...</option>
                             <option value="1">1 (Strongly Disagree)</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -142,8 +169,8 @@
                         <label for="q7">
                             <h5>Do you consider yourself a highly motivated person?</h5>
                         </label>
-                        <select class="form-control" id="q7">
-                            <option selected>Choose...</option>
+                        <select class="form-control surveyValues" id="q7">
+                            <option value="0" selected>Choose...</option>
                             <option value="1">1 (Strongly Disagree)</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -155,8 +182,8 @@
                         <label for="q8">
                             <h5>Are you passionate in everything you do?</h5>
                         </label>
-                        <select class="form-control" id="q8">
-                            <option selected>Choose...</option>
+                        <select class="form-control surveyValues" id="q8">
+                            <option value="0" selected>Choose...</option>
                             <option value="1">1 (Strongly Disagree)</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -168,8 +195,8 @@
                         <label for="q9">
                             <h5>Can you find the humor in almost any situation?</h5>
                         </label>
-                        <select class="form-control" id="q9">
-                            <option selected>Choose...</option>
+                        <select class="form-control surveyValues" id="q9">
+                            <option value="0" selected>Choose...</option>
                             <option value="1">1 (Strongly Disagree)</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -181,8 +208,8 @@
                         <label for="q10">
                             <h5>Do you enjoy taking random surveys?</h5>
                         </label>
-                        <select class="form-control" id="q10">
-                            <option selected>Choose...</option>
+                        <select class="form-control surveyValues" id="q10">
+                            <option value="0" selected>Choose...</option>
                             <option value="1">1 (Strongly Disagree)</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -190,8 +217,7 @@
                             <option value="5">5 (Strongly Agree))</option>
                         </select>
                     </div>
-                    <!-- submit button -->
-                    <button type="submit" id ="submit" class="btn btn-info">Submit</button>
+                    <button type="submit" id="submit" class="btn btn-info">Submit</button>
                 </form>
             </div>
         </div>
@@ -201,10 +227,6 @@
         </div>
     </div>
 
-
-
-
-
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- bootstrap js -->
@@ -212,16 +234,67 @@
 
     <!-- local script -->
     <script>
-
-        //for modal
-        $("#resultsModal").modal(options)
         //on click for submit button to get all inputs and post to the app/data/friends.js file
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+            // form validation
+            if ($(".form-control").val() === "") {
+                $("#missingAboutYouModal").modal(open);;
+            }
+            else if ($(".surveyValues").val() === "0") {
+                $("#blankQuestionModal").modal(open);
+            }
+            else {
+                //get the values of every field and save as an object "newFriend" to send to API
+                var newFriend = {
+                    name: $("#name").val().trim(),
+                    photo: $("#photoLink").val().trim(),
+                    scores: [
+                        $("#q1").val(),
+                        $("#q2").val(),
+                        $("#q3").val(),
+                        $("#q4").val(),
+                        $("#q5").val(),
+                        $("#q6").val(),
+                        $("#q7").val(),
+                        $("#q8").val(),
+                        $("#q9").val(),
+                        $("#q10").val(),
+                    ]
+                };
+                //testing
+                // console.log("this is the friend Object: " + JSON.stringify(newFriend, null, 2));
 
-        //save data as an object, called friend (this matches what is in the apiRoutes file)
+                //post the object to the api /api/friends (which then sends it to the the friends.js to then be used in the )
+                $.post("/api/friends", newFriend, function (data) {
+                    // fill in the fields with the data from our api for best match from the api file
+                    //data is res.json in our POST api...remember this
+                    //create variable for header for match name
+                    var $matchName = $("<h5>");
+                    //append the the matchName fro mteh res.json
+                    $matchName.append(data.name);
 
-        //get to then post the best match to the results modal from the app/routing/apiRoutes.js file
+                    //create an img tag to hold the image using link from our API
+                    var $matchImg = $("<img>").attr("src", (data.photo));
 
+                    // append both to the modul
+                    $(".modal-body").append($matchName);
+                    $(".modal-body").append($matchImg);
+                });
 
+                //clear inputs from the form
+                $(".form-control").val("");
+                $(".surveyValues").val("0");
+
+                //open modal to show results
+                $("#resultsModal").modal(open);
+            };
+        });
+
+        //clear the modal when closed so that multiple results don't add up
+        $("body").on("click", "#close", function () {
+            $(".modal-body").text("");
+        });
 
     </script>
 </body>
