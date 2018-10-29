@@ -51,6 +51,24 @@ var friendsArray = [
             1
         ]
     },
+    {
+        "name": "Sandra Bullock",
+        "photo": "https://cdn.cliqueinc.com/cache/posts/263078/sandra-bullock-west-hollywood-home-263078-1531756901360-main.700x0c.jpg",
+        "scores": [
+            2,
+            5,
+            5,
+            3,
+            2,
+            1,
+            4,
+            1,
+            2,
+            5
+        ]
+    },
+
+    
 ]
 
 //export to the api routes page
