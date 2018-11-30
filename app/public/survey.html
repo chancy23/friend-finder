@@ -261,10 +261,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <!-- local script -->
     <script>
-        //on click for submit button to get all inputs and post to the app/data/friends.js file
         $("#submit").on("click", function (event) {
             event.preventDefault();
-            // form validation
             if ($(".form-control").val() === "") {
                 $("#missingAboutYouModal").modal(open);
             }
@@ -292,23 +290,17 @@
 
                 //post the object to the api//also to get from the api the best match
                 $.post("/api/friends", newFriend, function (data) {
-                    // fill in the fields with the data from our api for best match from the api file
-                    //data is res.json in our POST api...remember this
-
-                    //create variable for header for match name
+                    // data is res.json in our POST api...remember this
                     var $matchName = $("<h4>");
-                    //append the the matchName from the data
                     $matchName.append(data.name);
 
-                    //create an img tag to hold the image using link from our API
                     var $matchImg = $("<img>").attr("src", (data.photo)).css({"max-width":"300px", "height":"auto"});
                     $(".modal-body").append($matchName, $matchImg);
                 });
 
-                //clear inputs from the form
                 $(".form-control").val("");
                 $(".surveyValues").val("0");
-                //open modal to show results
+
                 $("#resultsModal").modal(open);
             };
         });
