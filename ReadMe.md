@@ -11,6 +11,6 @@ This application takes in user inputs (via a 10 question survey) and finds their
 
 Deployed At: https://friend-finder102918.herokuapp.com/
 
-Video Demo: https://drive.google.com/open?id=1OhOkBei4z8MQKB0puBY3lakyQq3-Pmyl
+Video Demo: https://drive.google.com/file/d/1OhOkBei4z8MQKB0puBY3lakyQq3-Pmyl/view?usp=sharing
 
 Contact chancyleath@hotmail.com if you have issues or questions
